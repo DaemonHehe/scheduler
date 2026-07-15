@@ -1,0 +1,150 @@
+/* Tailwind v4 */
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/* ── Light & Dark mode unified CSS custom properties ── */
+:root, .dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  
+  --card: #0f0f0f;
+  --card-foreground: #ffffff;
+  
+  --popover: #0f0f0f;
+  --popover-foreground: #ffffff;
+  
+  --primary: #FDBF2D;
+  --primary-foreground: #000000;
+  
+  --secondary: #1f1f1f;
+  --secondary-foreground: #ffffff;
+  
+  --muted: #1f1f1f;
+  --muted-foreground: #a3a3a3;
+  
+  --accent: #1f1f1f;
+  --accent-foreground: #ffffff;
+  
+  --destructive: oklch(0.57 0.25 27);
+  --available: oklch(0.63 0.18 150);
+  --warning: oklch(0.80 0.18 85);
+  --warning-foreground: oklch(0.45 0.10 61);
+  
+  --border: #262626;
+  --input: #262626;
+  --ring: #FDBF2D;
+  
+  --chart-1: oklch(0.73 0.23 260);
+  --chart-2: oklch(0.68 0.22 330);
+  --chart-3: oklch(0.65 0.25 180);
+  --chart-4: oklch(0.69 0.24 90);
+  --chart-5: oklch(0.71 0.23 20);
+  
+  --radius: 0.625rem;
+}
+
+/* ── Tailwind v4 theme: map CSS vars → utility classes ── */
+@theme inline {
+  /* Semantic colors */
+  --color-background:            var(--background);
+  --color-foreground:            var(--foreground);
+  --color-card:                  var(--card);
+  --color-card-foreground:       var(--card-foreground);
+  --color-popover:               var(--popover);
+  --color-popover-foreground:    var(--popover-foreground);
+  --color-primary:               var(--primary);
+  --color-primary-foreground:    var(--primary-foreground);
+  --color-secondary:             var(--secondary);
+  --color-secondary-foreground:  var(--secondary-foreground);
+  --color-muted:                 var(--muted);
+  --color-muted-foreground:      var(--muted-foreground);
+  --color-accent:                var(--accent);
+  --color-accent-foreground:     var(--accent-foreground);
+  --color-destructive:           var(--destructive);
+  --color-available:             var(--available);
+  --color-warning:               var(--warning);
+  --color-warning-foreground:    var(--warning-foreground);
+  --color-border:                var(--border);
+  --color-input:                 var(--input);
+  --color-ring:                  var(--ring);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar:                    var(--sidebar);
+  --color-sidebar-foreground:         var(--sidebar-foreground);
+  --color-sidebar-primary:            var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent:             var(--sidebar-accent);
+  --color-sidebar-accent-foreground:  var(--sidebar-accent-foreground);
+  --color-sidebar-border:             var(--sidebar-border);
+  --color-sidebar-ring:               var(--sidebar-ring);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+}
+
+/* ── Dark variant ── */
+@custom-variant dark (&:is(.dark *));
+
+/* ── Base layer ── */
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: color-mix(in oklch, var(--ring) 50%, transparent);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDown {
+  from { transform: translateY(-10px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+/* ── Utility classes ── */
+.animate-fade-in   { animation: fadeIn     0.3s ease-out forwards; }
+.animate-slide-down { animation: slideDown  0.3s ease-out forwards; }
+.animate-pulse-soft { animation: pulse-soft 1.5s ease-in-out infinite; }
+
+/* ── Glassmorphism helpers ── */
+.glass-header {
+  background-color: color-mix(in oklch, var(--background) 60%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Custom Scrollbar ── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-md);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
