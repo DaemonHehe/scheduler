@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   generator: 'v0.app',
   icons: {
     icon: [
-      { url: '/logo.jpg', sizes: 'any' },
+      { url: '/logo.png', sizes: 'any' },
     ],
-    apple: '/logo.jpg',
+    apple: '/logo.png',
   },
 }
 
