@@ -7,7 +7,6 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 export const metadata: Metadata = {
   title: 'SyncTerm',
   description: 'A blazingly fast, client-side university scheduler built for students.',
-  generator: 'v0.app',
   icons: {
     icon: [
       { url: '/logo.png', sizes: 'any' },
